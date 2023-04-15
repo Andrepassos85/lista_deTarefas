@@ -1,15 +1,18 @@
-$(document).ready(function() { 
-    
-    $('form button').click(function(){
-        
-    })
-
-    $('form').on('submit', function(e) {
-        e.preventDefault();
-    const novaTarefa = $('#endreco-tarefa').val();
-    const novoItem = $('<li></li>');
-    $(`div  src="${novaTarefa}>`).appendTo(novoItem)
-
-    })
-
-})
+$(document).ready(function() {
+    // Adiciona tarefa na lista
+    $('#adiciona-tarefa').submit(function(event) {
+      event.preventDefault();
+      var tarefa = $('#endereco-tarefa').val();
+      if (tarefa !== '') {
+        var novaTarefa = $('<li>' + tarefa + '</li>');
+        $('#lista-tarefas').append(novaTarefa);
+        $('#endereco-tarefa').val('');
+      }
+    });
+  
+    // Riscar tarefa ao clicar
+    $('#lista-tarefas').on('click', 'li', function() {
+      $(this).css('text-decoration', 'line-through');
+    });
+  });
+  
